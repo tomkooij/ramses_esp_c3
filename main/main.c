@@ -34,6 +34,7 @@ void app_main(void)
 {
   const esp_app_desc_t *app = esp_app_get_description();
   printf("# %s %s\n",app->project_name, app->version );
+  printf("# ESP32c3 Port\n");
 
   ESP_ERROR_CHECK( esp_event_loop_create_default() );
 
@@ -42,8 +43,13 @@ void app_main(void)
   ramses_nvs_init();
   ramses_network_init( CONFIG_HOST_CORE );
 
+
   Radio_init( CONFIG_RADIO_CORE );
+  printf("# ESP32c3 Radio_init() done.\n");
+
   Host_init( CONFIG_HOST_CORE );
+  printf("# ESP32c3 Host_init() done.\n");
+
 
   gpio_reset_pin( CONFIG_FUNCTION_PIN );
   gpio_set_direction( CONFIG_FUNCTION_PIN, GPIO_MODE_INPUT );

@@ -16,11 +16,13 @@ menu "CC1101 Configuration"
 	config CC_GPIO_RANGE_MAX
 		int
 		default 48 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 
 	config CC_MOSI_GPIO
 		int "CC1101 MOSI GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 35 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the MOSI SPI signal.
 
@@ -28,6 +30,7 @@ menu "CC1101 Configuration"
 		int "CC1101 SCK GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 36 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the SCK SPI signal.
 
@@ -35,6 +38,7 @@ menu "CC1101 Configuration"
 		int "CC1101 MISO GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 37 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the MISO SPI signal.
 
@@ -42,6 +46,7 @@ menu "CC1101 Configuration"
 		int "CC1101 CSN GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 38 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the CSN SPI signal.
 
@@ -49,6 +54,7 @@ menu "CC1101 Configuration"
 		int "CC1101 GDO0 GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 39 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the GDO0 signal.
 
@@ -56,6 +62,7 @@ menu "CC1101 Configuration"
 		int "CC1101 GDO2 GPIO"
 		range 0 CC_GPIO_RANGE_MAX
 		default 40 if IDF_TARGET_ESP32S3
+		default 48 if IDF_TARGET_ESP32C3
 		help
 			Pin Number to be used as the GDO0 signal.
 

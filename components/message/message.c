@@ -136,7 +136,8 @@ struct msg_list {
 static void msg_put( struct msg_list *list, struct message **ppMsg, uint8_t reset ) {
   struct message *pMsg = NULL;
   if( ppMsg && list ) {
-    uint32_t volatile register ilevel = XTOS_DISABLE_ALL_INTERRUPTS;
+    //uint32_t volatile register ilevel = XTOS_DISABLE_ALL_INTERRUPTS;
+    uint32_t ilevel = portSET_INTERRUPT_MASK_FROM_ISR();
     pMsg = (*ppMsg);
     if( pMsg ) {
 
@@ -154,14 +155,16 @@ static void msg_put( struct msg_list *list, struct message **ppMsg, uint8_t rese
 
       (*ppMsg) = NULL;
     }
-    XTOS_RESTORE_INTLEVEL(ilevel);
+    //XTOS_RESTORE_INTLEVEL(ilevel);
+   portCLEAR_INTERRUPT_MASK_FROM_ISR(ilevel);
   }
 }
 
 static struct message *msg_get( struct msg_list *list ) {
   struct message *pMsg = NULL;
   if( list ) {
-    uint32_t volatile register ilevel = XTOS_DISABLE_ALL_INTERRUPTS;
+    //uint32_t volatile register ilevel = XTOS_DISABLE_ALL_INTERRUPTS;
+    uint32_t ilevel = portSET_INTERRUPT_MASK_FROM_ISR();
     pMsg = list->out;
 
     if( pMsg ) {
@@ -173,7 +176,8 @@ static struct message *msg_get( struct msg_list *list ) {
 
       pMsg->state = S_START;
     }
-    XTOS_RESTORE_INTLEVEL(ilevel);
+    //XTOS_RESTORE_INTLEVEL(ilevel);
+    portCLEAR_INTERRUPT_MASK_FROM_ISR(ilevel);
   }
 
   return pMsg;
