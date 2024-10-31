@@ -4,7 +4,8 @@ menu "RAMSES_ESP configuration"
     config RADIO_CORE
     int "Core for Radio Task"
         range 0 1
-        default 1
+        default 1 if IDF_TARGET_ESP32S3
+        default 0 if IDF_TARGET_ESP32C3
         help
             The Radio task will run on this core.
 

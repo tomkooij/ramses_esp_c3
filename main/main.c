@@ -43,12 +43,11 @@ void app_main(void)
   ramses_nvs_init();
   ramses_network_init( CONFIG_HOST_CORE );
 
-
+  printf("# ESP32c3 Radio_init():\n");
   Radio_init( CONFIG_RADIO_CORE );
   printf("# ESP32c3 Radio_init() done.\n");
 
   Host_init( CONFIG_HOST_CORE );
-  printf("# ESP32c3 Host_init() done.\n");
 
 
   gpio_reset_pin( CONFIG_FUNCTION_PIN );
