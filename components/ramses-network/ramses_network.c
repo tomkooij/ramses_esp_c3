@@ -346,6 +346,7 @@ void ramses_network_init( BaseType_t coreID ) {
   }
 
   ramses_sntp_init( coreID, ctxt->sntp_server );
-  ramses_ota_init( coreID );
+  /* disable OTA on esp32c3 - not enough flash for OTA*/
+  //ramses_ota_init( coreID );
   ramses_wifi_init( coreID );
 }
